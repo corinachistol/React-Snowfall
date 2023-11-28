@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './flake.css'
 
 const Component = ({name}) => {
@@ -23,7 +23,15 @@ const Flake = withCoordinates(Component)
 
 const Snowfall = () => {
 
-    // const [flakes,setFlakes] = useState([])
+    const [count,setCount] = useState()
+
+
+    useEffect(()=> {
+        const intervalId = setInterval(()=>{
+            setCount(count+1)
+        },500)
+        return () => clearInterval(intervalId)
+    },[])
 
     function randCoord (min,max) {
         return Math.floor(min + (max-min) * Math.random())
