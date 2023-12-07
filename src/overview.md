@@ -5,7 +5,7 @@
    const style = {
         width:`${size}px`,
         height: `${size}px`,
-        backgroundColor: `radial-gradient(color, transparent 60%)` 
+        backgroundImage: `radial-gradient(${color}, transparent 60%)` 
     }
 
 
@@ -53,7 +53,7 @@ Flake
    \            props
     \             |
      \            v
-+-----+-------({ size,color })----------+
++-----({ size,color,top,left })---------+
 |                  |                    |
 |                  v                    |
 |        style ={... }                  |       loose coupling: object -> styles
@@ -70,3 +70,33 @@ Flake
 |       </div>                          |
 |                                       |
 +---------------------------------------+
+
+
+
+                     props
+Flake                  |
+    \                  v
++--------({..., ..., top, ...})-----------+
+|                      |                  |
+|                      |                  |
+|                      +------------------------------------+
+|                                                           |
+|                                                           |              +-------+
+|                      [_top,setTop] <-------------> useState(top) <------>|    0  |
+|                      |                  |                                +-------+
+|                      |                  | 
+|                      |                  | 
+|                      +------------------------------------+
+|                                         |                 |
+|                                         |                 v
+|                                         |              css vars
+|                                         |                 |
+|                      +------------------------------------+
+|                      |                  |
+|                      v                  |
+|           <div style={style}>           |
+|           </div>                        |
+|                      |                  |
++----------------------v------------------+                      
+
+     
