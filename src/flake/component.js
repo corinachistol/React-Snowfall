@@ -8,29 +8,28 @@ const Flake = ({
         size = 0,
         color = 0,
         top = 0,
-        left = 0
+        left = 0,
+        whenDone = () => { throw new Error('whenDone callback not implemented') }
     }) => {
-        console.log(size)
-        // console.log(color)
+
+    const TOP_LIMIT  = 100
 
     let [_top,setTop] = useState(top)
-    console.log(_top)
+    console.log('_top:',_top)
 
-    const heigthC = window.innerHeight
+    useEffect(()=> {
+        if( _top > TOP_LIMIT){
+            whenDone()
+        }else{
+            setTimeout(()=>{
+                setTop(_top + 10)
+                console.log("Update executed!")
+        
+            },500)
+        }
 
-    // //useEffect(......)
-    const timer = setTimeout(()=>{
-        setTop(_top + 10)
-        console.log("Update executed!")
-    
-    },500)
-    //
+    })
 
-    if(_top > heigthC) {
-        console.log("bottom reached")
-        clearTimeout(timer)
-    }
-    
 
     const style = {
         '--size': `${size}px`,
@@ -42,7 +41,7 @@ const Flake = ({
     
     return (
         <div 
-            style={_top > heigthC ? {display:"none"}  : style}
+            style={style}
             className="flake"
         >
 

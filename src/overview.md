@@ -99,4 +99,26 @@ Flake                  |
 |                      |                  |
 +----------------------v------------------+                      
 
-     
+
+
+
+    <App />-------+
+      |           |        +----------- setShowChild(false)     
+      |      callback      |                |
+      |           |        |                |
+      |           |        v                |
+      |+-------<Flake ...   />              |
+                  x props                   |
+                  |                         |
+                  |                         |
+                  |                         |
+                  |                         |
+                  |                         |   <flake render lifecycle >
+                  |                         |
+                  |                         |
+                  |                         |
+                  v < return ( </>)         |
+                    < useEffect (()=>{      |
+                        if () =>whenDone()  |
+                        else => setTimeout(  )
+                    })
