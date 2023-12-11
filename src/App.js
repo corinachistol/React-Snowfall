@@ -4,7 +4,7 @@ export default function App() {
     
     return (
         <div className="App">
-            <Snow quantity="5"/>
+            <Snow quantity={5}/>
            
         </div>
     )
