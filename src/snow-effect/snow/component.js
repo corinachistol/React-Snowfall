@@ -10,10 +10,10 @@ const Snow = ({quantity}) => {
     let color= randColor({redish: 0.1, greenish: 0.1, blueish: 0.85} )
 
     let initialFlakes = Array.from({length:5}, (_,i)=>{
-        return <Flake key={i+1} size={10} top={0} left={(i+left) * 10} color={color}/>
+        return <Flake key={(i+1)} size={10} top={0} left={(i+left) * 10} color={color}/>
     })
-    // let initialFlakes=[]
 
+    // let initialFlakes=[]
     // for(let i = 0; i <= quantity; i++){
     //     initialFlakes.push(
     //         <Flake key={i} size={10} top={0} left={(i+left) * 10} color={color}/>
