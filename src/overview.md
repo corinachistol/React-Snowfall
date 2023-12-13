@@ -199,4 +199,15 @@ v   return Snow()
                              false
                                 v
                             setTop(top: ? +5) -> ? 
+
+
+
+---- [  ] <-----update
+      |
+      0--Flake <---- (obj)
+      1--Flake <----
+      ....
+      n---Flake
+    
+    
                               
