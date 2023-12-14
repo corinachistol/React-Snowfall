@@ -38,7 +38,7 @@ const Snow = ({quantity}) => {
                                 key={1}
                                 size={randInt(15,30)}
                                 speed={scale}
-                                top={randInt(-10, 30)}
+                                top={randInt(-10, 20)}
                                 left={randInt(0,100)}
                                 color={color} />
                             )
