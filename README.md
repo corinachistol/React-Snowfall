@@ -1,3 +1,6 @@
+![image](https://github.com/corinachistol/React-Snowfall/assets/115491975/8d9dcd49-a927-4473-9b9b-074b501ded41)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
