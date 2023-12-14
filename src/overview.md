@@ -137,11 +137,13 @@ virtual DOM                            DOM
         false
 
 
-1. ascunzi componenta flake prin display:"none". Neajuns -> in virtual DOM, functia componentei va rula de fiecare data cind tre de facut un update.La o componenta, nu e problema, dar la mai multi fulgi virtual DOM va lucra si cu acestia, mai multa memorie consumata. Controlul este detinut de componenta copil FLake,este transferat prin css in browser, pina la urma React nu controleaza nimic in asa caz. Exemple in care termporat ascunzi o compoennta: dropdown, carousel,slide, modal. Atit timp cit stim ca vom reveni la aceeasi manifestare a componentei.
+1. ascunzi componenta flake prin display:"none". Neajuns -> in virtual DOM, functia componentei va rula de fiecare data cind tre de facut un update.La o componenta, nu e problema, dar la mai multi fulgi virtual DOM va lucra si cu acestia, mai multa memorie consumata. Controlul este detinut de componenta copil FLake,este transferat prin css in browser, pina la urma React nu controleaza nimic in asa caz. 
+## Exemple in care termporat ascunzi o compoennta: dropdown, carousel,slide, modal. Atit timp cit stim ca vom reveni la aceeasi manifestare a componentei.
 
-2.  o alta conditie poate fi scrisa chiar in interiorul return FLake( TOP_LIMIT > 100 ? <div style={style} className="flake"></div> : null ). sau de a returna <></>, dar el tot ocupa memorie. Controlul se afla inca in miinile el, diferenta daca returnanm null, div-ul nu va fi prezenta in DOM real.Scade nivelul de procesare in memorie.
+2.  o alta conditie poate fi scrisa chiar in interiorul return FLake( TOP_LIMIT > 100 ? <div style={style} className="flake"></div> : null ). sau de a returna <></>, dar el tot ocupa memorie. Controlul se afla inca in miinile copilului, diferenta daca returnanm null, div-ul nu va fi prezenta in DOM real.Scade nivelul de procesare in memorie.
 
-3. ultima abordare , lift up the state, conditional rendering in App. Printr-un && am marcat conditia ca atunci cind e false, Flake sa fie sters din DOM. Acest aproach este cel mai bun cind  vrei sa elimini un element de pe ecran. Noua ne trebuie nu doar sa dispara vizual, dar si resursele din memorie sa fie 0 pentru aceasta componenta. Controlul acum e detinut de parinte. Exemple: rezultatele cautarii, search, modal in care de fiecare data afiseaza un nou continut, notificarile apar cu alte mesaje,
+3. ultima abordare , lift up the state, conditional rendering in App. Printr-un && am marcat conditia ca atunci cind e false, Flake sa fie sters din DOM. Acest aproach este cel mai bun cind  vrei sa elimini un element de pe ecran. Noua ne trebuie nu doar sa dispara vizual, dar si resursele din memorie sa fie 0 pentru aceasta componenta. Controlul acum e detinut de parinte. 
+##  Exemple: rezultatele cautarii, search, modal in care de fiecare data afiseaza un nou continut, notificarile apar cu alte mesaje,
 
 
     <App>
@@ -209,5 +211,5 @@ v   return Snow()
       ....
       n---Flake
     
-    
+
                               

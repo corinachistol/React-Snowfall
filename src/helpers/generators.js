@@ -17,8 +17,12 @@ const randColor = ({
     return `rgb(${red}, ${green}, ${blue})`
 }
 
+const randFloat = (value) =>{
+    return value * Math.random()
+}
 
 
 
 
-export {randInt,randColor}
+
+export {randInt,randColor,randFloat}
